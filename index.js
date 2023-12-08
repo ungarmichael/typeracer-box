@@ -56,7 +56,9 @@ async function main () {
 
   try {
     const filename = Object.keys(gist.data.files)[0]
+    console.log(filename);
     const previousGist = await octokit.gists.get({ gist_id: gistId })
+    console.log(previousGist);
     if (previousGist.data.files[`⌨️ TypeRacer | Statistics of ${username}`].content !== lines.join('\n')) {
       console.log('updating gist as it is different from the one found online...')
       await octokit.gists.update({
